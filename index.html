@@ -6,9 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="cas.css">
-    <script src="jav.js"></script>
-</head>
+ </head>
 <body>
-    <h1>HELLO ODIN REPOS</h1>
+    <h1>CLICK ON EITHER THE ROCK PAPER OR SCISSOR</h1>
+    <div class="btn">
+        <button class="r" onclick="userChoice('Rock')">ROCK</button> 
+        <button class="p" onclick="userChoice('Paper')">PAPER</button>
+        <button class="s" onclick="userChoice('Scissors')">SCISSOR</button>
+    </div>
+
+  <div class="choice">
+   <p class="user">user Choice :: <span id="user">No! value</span></p>
+    <P class="computer">Computer choice  ::<span id="computer">No! value</span></P>
+  </div>
+     
+        <script src="jav.js"></script>
+
 </body>
 </html>
