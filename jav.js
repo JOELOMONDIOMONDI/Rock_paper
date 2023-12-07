@@ -6,6 +6,7 @@ let usscore=document.querySelector('#user')
 let compscore=document.querySelector('#computer')
 let names=["Rock","Paper","Scissors"];
 let buttons=document.querySelectorAll("button")
+let overallWinner=document.querySelector("#winner")
  
 
  function getComputerChoice(){
@@ -44,18 +45,15 @@ function userChoice(userSelection){
  
 function playground(comp, user) {
     if (comp === user) {
-        console.log("draw")
-        return "draw";
+         return "draw";
     } else if (
         (comp === "Paper" && user === "Rock") ||
         (comp === "Rock" && user === "Scissors") ||
         (comp === "Scissors" && user === "Paper")
     ) {
-         console.log("computer wins");
-        return "computer";
+         return "computer wins";
      } else {
-        console.log("user wins")
-        return "user";
+         return "user wins";
     }
 }
 
@@ -65,13 +63,14 @@ function handleUserChoice(choice){
 //   call user and return selected value
 
    let theChoice=userChoice(choice)
-   let comp=getComputerChoice()
+   let compute=getComputerChoice()
    console.log(theChoice)
-   console.log(comp)
+   console.log(compute)
 
 //    calling playground function when the user clicks
 
-   
+    let theWinner=playground(compute,theChoice)
+    overallWinner.textContent=theWinner;
  }
  
  
