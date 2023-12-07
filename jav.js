@@ -5,6 +5,7 @@ let Scissors=document.querySelector('.s')
 let usscore=document.querySelector('#user')
 let compscore=document.querySelector('#computer')
 let names=["Rock","Paper","Scissors"];
+let buttons=document.querySelectorAll("button")
  
 
  function getComputerChoice(){
@@ -14,44 +15,32 @@ let names=["Rock","Paper","Scissors"];
     return final;
 }
 
-function userInput(userSelection){
-    if(userSelection == names[0]){
-        return userSelection;
-     }
-     else if(userSelection == names[1]){
-         return userSelection
-     }
-     else if(userSelection == names[2]){ 
-         return userSelection
-     }
-
-}
-
+ 
 function userChoice(userSelection){
-     if(userSelection == names[0]){
+   let selected
+    if(userSelection == names[0]){
          usscore.textContent=names[0];
-         getComputerChoice();
-         return userSelection;
+         selected =names[0]
 
      }
      else if(userSelection == names[1]){
          usscore.textContent=names[1];
-         getComputerChoice();
-         return userSelection
+          selected=names[1]
+
 
 
      }
      else if(userSelection == names[2]){
           usscore.textContent=names[2];
-          getComputerChoice();
-         return userSelection
+           selected=names[2]
 
 
      }
+     getComputerChoice();
+     return selected
   }
 
-document,addEventListener("click", userChoice)
-
+ 
  
 function playground(comp, user) {
     if (comp === user) {
@@ -69,10 +58,28 @@ function playground(comp, user) {
         return "user";
     }
 }
- let final=getComputerChoice();
-  let useChoice= userInput();
-  const winner=playground(final,useChoice);
-  console.log(winner)
+
+
+// fuction to handle user choice from HTML side
+function handleUserChoice(choice){
+//   call user and return selected value
+
+   let theChoice=userChoice(choice)
+   let comp=getComputerChoice()
+   console.log(theChoice)
+   console.log(comp)
+
+//    calling playground function when the user clicks
+
+   
+ }
+ 
+ 
+
+      
+
+
+
 
 
 
