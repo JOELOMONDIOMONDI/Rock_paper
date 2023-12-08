@@ -1,4 +1,5 @@
 
+// IMPORTED FILES FROM THE HTML
 let Paper=document.querySelector('.p')
 let Rock=document.querySelector('.r')
 let Scissors=document.querySelector('.s')
@@ -11,7 +12,7 @@ let compScore=document.querySelector("#span2")
 let userscore=document.querySelector("#span1")
 let tie=document.querySelector("#tie")
  
-
+// FUNCTION TO GET THE COMPUTER CHOICE
  function getComputerChoice(){
      let choice=Math.floor(Math.random()*names.length);
     let final=names[choice];
@@ -19,7 +20,7 @@ let tie=document.querySelector("#tie")
     return final;
 }
 
- 
+//  FUNCTION FOR USER CHOICE AND ALSO CALLS COMPUTER CHOICE
 function userChoice(userSelection){
    let selected
     if(userSelection == names[0]){
@@ -45,7 +46,7 @@ function userChoice(userSelection){
   }
 
  
- 
+//  FUNCTION FOR CHECKING THE PLAYGROUND
 function playground(comp, user) {
     if (comp === user) {
          return "draw";
@@ -60,47 +61,65 @@ function playground(comp, user) {
     }
 }
 
-           let userScore = 0;
-            let computerScore = 0;
-
+        
+// FUNCTION TO INCREMENT THE CHOICES OF USER AND COMPUTER
      function count(foo){
      if (foo === "user") {
             userScore++;
-             console.log(`User Score: ${userScore}`);
-         } else if (foo === "computer") {
+          } else if (foo === "computer") {
             computerScore++;
-            console.log(`Computer Score: ${computerScore}`);
-        }
+         }
         else if(foo === "draw"){
             console.log("out")
             
         }
 
-        console.log(`User Score: ${userScore} - Computer Score: ${computerScore}`);
-         compScore.textContent=computerScore
+          compScore.textContent=computerScore
          userscore.textContent=userScore
     }  
  
 
-  // fuction to handle user choice from HTML side
-     function handleUserChoice(choice){
-    
-//   call user and return selected value
-
-      let theChoice=userChoice(choice)
-       let compute=getComputerChoice()
+  // MAIN FUNCTION THAT GETS HTML VALUES GIVING IT TO USER FUNCTION AS PARAMETER
+     function handleUserChoice(choice){  
+          let theChoice=userChoice(choice)
+           let compute=getComputerChoice()
 //    calling playground function when the user clicks
 
       let theWinner=playground(compute,theChoice)
-      overallWinner.textContent=theWinner;
+      overallWinner.textContent=theWinner;       
 
-      console.log(theWinner)
-          
-          count(theWinner)
-
-    }
-
+     if(userScore < 5 && computerScore < 5) {
+        // calling the function to increment
+        count(theWinner)
+          }   
+         
  
-    
+  }
+    // FUNCTION TO CLEAR THE SCREEN ONCE CODE IS FINISHED
+
+    function clear(){
+        document.querySelector(".user").style.display="none"
+        document.querySelector(".computer").style.display="none"
+        document.querySelector("#winner").style.display="none"
   
+    }
+        let userScore = 0;
+            let computerScore = 0;
+            // FUNCTION TO DISPLAY THO OUTCOME
+        function displayOutcome(){
     
+    if(userScore === 5 || computerScore === 5) {
+            let outcome=userScore>computerScore ? "User" :"Computer" 
+            tie.textContent=`${outcome} wins the game Refresh to start!!`
+            clear()
+
+        }
+    else if(userScore===5 && computerScore===5){
+        tie.textContent="outcome is draw refresh to start"
+        clear()
+    }
+}
+    
+document.addEventListener("click",displayOutcome)
+
+  
