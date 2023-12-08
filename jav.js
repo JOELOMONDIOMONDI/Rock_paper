@@ -7,6 +7,9 @@ let compscore=document.querySelector('#computer')
 let names=["Rock","Paper","Scissors"];
 let buttons=document.querySelectorAll("button")
 let overallWinner=document.querySelector("#winner")
+let compScore=document.querySelector("#span2")
+let userscore=document.querySelector("#span1")
+let tie=document.querySelector("#tie")
  
 
  function getComputerChoice(){
@@ -51,98 +54,53 @@ function playground(comp, user) {
         (comp === "Rock" && user === "Scissors") ||
         (comp === "Scissors" && user === "Paper")
     ) {
-         return "computer wins";
+         return "computer";
      } else {
-         return "user wins";
+         return "user";
     }
 }
 
+           let userScore = 0;
+            let computerScore = 0;
 
-// fuction to handle user choice from HTML side
-function handleUserChoice(choice){
+     function count(foo){
+     if (foo === "user") {
+            userScore++;
+             console.log(`User Score: ${userScore}`);
+         } else if (foo === "computer") {
+            computerScore++;
+            console.log(`Computer Score: ${computerScore}`);
+        }
+        else if(foo === "draw"){
+            console.log("out")
+            
+        }
+
+        console.log(`User Score: ${userScore} - Computer Score: ${computerScore}`);
+         compScore.textContent=computerScore
+         userscore.textContent=userScore
+    }  
+ 
+
+  // fuction to handle user choice from HTML side
+     function handleUserChoice(choice){
+    
 //   call user and return selected value
 
-   let theChoice=userChoice(choice)
-   let compute=getComputerChoice()
-   console.log(theChoice)
-   console.log(compute)
-
+      let theChoice=userChoice(choice)
+       let compute=getComputerChoice()
 //    calling playground function when the user clicks
 
-    let theWinner=playground(compute,theChoice)
-    overallWinner.textContent=theWinner;
- }
- 
- 
+      let theWinner=playground(compute,theChoice)
+      overallWinner.textContent=theWinner;
 
-      
+      console.log(theWinner)
+          
+          count(theWinner)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// function game() {
-//     let userScore = 0;
-//     let computerScore = 0;
-
-//     while (userScore < 5 && computerScore < 5) {
-//         const userChoice = getUserInput();
-//         const computerChoice = getComputerChoice();
-//         console.log("Computer's choice:", computerChoice);
-//         console.log("User's choice:", userChoice);
-
-//         const winner = playground(computerChoice, userChoice);
-
-//         if (winner === "user") {
-//             userScore++;
-//         } else if (winner === "computer") {
-//             computerScore++;
-//         }
-
-//         console.log(`User Score: ${userScore} - Computer Score: ${computerScore}`);
-//     }
-
-//     console.log("\nFinal Score:");
-//     console.log(`User: ${userScore} - Computer: ${computerScore}`);
-
-//     if (userScore === computerScore) {
-//         console.log("It's a tie!");
-//     } else {
-//         const overallWinner = userScore > computerScore ? "User" : "Computer";
-//         console.log(`${overallWinner} wins the game!`);
-//     }
-// }
+    }
 
  
+    
+  
+    
