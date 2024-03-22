@@ -105,7 +105,7 @@ function playground(comp, user) {
     }
         let userScore = 0;
             let computerScore = 0;
-            // FUNCTION TO DISPLAY THO OUTCOME
+            // FUNCTION TO DISPLAY THE OUTCOME
         function displayOutcome(){
     
     if(userScore === 5 || computerScore === 5) {
